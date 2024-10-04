@@ -6,7 +6,6 @@ import 'package:simple_irrigation_system/DialogBox/errorDialog.dart'; // Custom 
 import 'package:simple_irrigation_system/DialogBox/loadingDialog.dart'; // Custom loading dialog box
 import 'package:simple_irrigation_system/authentication/loginPage.dart'; // Login page
 import 'package:simple_irrigation_system/widgets/Colord.dart'; // Custom colors
-import 'package:shared_preferences/shared_preferences.dart'; // Shared preferences for local storage
 
 // Define a class named RegisterPage that extends StatefulWidget
 class RegisterPage extends StatefulWidget {
