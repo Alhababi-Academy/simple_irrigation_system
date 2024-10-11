@@ -14,6 +14,7 @@ class _MainPageState extends State<MainPage> {
   bool waterPumpStatus = false;
   double temperature = 0.0;
   double humidity = 0.0;
+  int soilMoisture = 0;
 
   @override
   void initState() {
@@ -29,6 +30,8 @@ class _MainPageState extends State<MainPage> {
           waterPumpStatus = data['pump_status'] ?? false;
           temperature = (data['temperature'] ?? 0.0).toDouble();
           humidity = (data['humidity'] ?? 0.0).toDouble();
+          soilMoisture =
+              data['soil_moisture'] ?? 0; // Fetching soil moisture value
         });
       }
     });
@@ -41,42 +44,53 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Water Pump Status
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  'مضخة المياه: ${waterPumpStatus ? "شغالة" : "طافيه"}',
-                  style: const TextStyle(
-                      fontSize: 22, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // Water Pump Status
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    'مضخة المياه: ${waterPumpStatus ? "تعمل" : "لا تعمل"}',
+                    style: const TextStyle(
+                        fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
 
-            // Temperature Display with Circle
-            CustomIndicator(
-              value: temperature,
-              maxValue: 100,
-              label: 'درجة الحرارة (°م)',
-              color: Colors.orange,
-            ),
-            const SizedBox(height: 30),
+              // Temperature Display with Circle
+              CustomIndicator(
+                value: temperature,
+                maxValue: 100,
+                label: 'درجة الحرارة (°م)',
+                color: Colors.orange,
+              ),
+              const SizedBox(height: 30),
 
-            // Humidity Display with Circle
-            CustomIndicator(
-              value: humidity,
-              maxValue: 100,
-              label: 'الرطوبة (%)',
-              color: Colors.blueAccent,
-            ),
-            const SizedBox(height: 30),
-          ],
+              // Humidity Display with Circle
+              CustomIndicator(
+                value: humidity,
+                maxValue: 100,
+                label: 'الرطوبة (%)',
+                color: Colors.blueAccent,
+              ),
+              const SizedBox(height: 30),
+
+              // Soil Moisture Display with Circle
+              CustomIndicator(
+                value: soilMoisture.toDouble(),
+                maxValue: 1023, // Assuming max value for analog sensor is 1023
+                label: 'رطوبة التربة',
+                color: Colors.green,
+              ),
+              const SizedBox(height: 30),
+            ],
+          ),
         ),
       ),
     );
