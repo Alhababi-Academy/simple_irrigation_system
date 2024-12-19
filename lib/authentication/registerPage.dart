@@ -9,7 +9,7 @@ import 'package:simple_irrigation_system/widgets/Colord.dart'; // Custom colors
 
 // Define a class named RegisterPage that extends StatefulWidget
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+  const RegisterPage({super.key});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();

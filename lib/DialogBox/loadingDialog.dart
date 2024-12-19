@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_irrigation_system/widgets/Colord.dart';
 
 class LoadingAlertDialog extends StatelessWidget {
   final String? message;
-  const LoadingAlertDialog({this.message});
+  const LoadingAlertDialog({super.key, this.message});
 
   @override
   Widget build(BuildContext context) {

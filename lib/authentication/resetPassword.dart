@@ -8,6 +8,8 @@ class ResetPassword extends StatelessWidget {
   final TextEditingController _emailTextEditingController =
       TextEditingController();
 
+  ResetPassword({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

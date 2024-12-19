@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:simple_irrigation_system/authentication/loginPage.dart';
+import 'package:simple_irrigation_system/home/ViewData.dart';
 import 'package:simple_irrigation_system/home/editProfile.dart';
 import 'package:simple_irrigation_system/home/mainPage.dart';
 import 'package:simple_irrigation_system/widgets/Colord.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -17,6 +18,7 @@ class _HomePageState extends State<HomePage> {
 
   static const List<Widget> _pages = <Widget>[
     MainPage(),
+    DataViewPage(),
     EditProfile(),
   ];
 
@@ -57,6 +59,10 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'الصفحة الرئيسية',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.save),
+            label: 'بيانات محفوظة',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),

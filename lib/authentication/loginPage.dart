@@ -10,7 +10,7 @@ import 'package:simple_irrigation_system/home/homePage.dart';
 import 'package:simple_irrigation_system/widgets/Colord.dart'; // Importing shared preferences package for storing data
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
