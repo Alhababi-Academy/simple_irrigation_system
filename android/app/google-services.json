@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "305137179870",
-    "project_id": "simple-irrigation-system",
-    "storage_bucket": "simple-irrigation-system.appspot.com"
+    "project_number": "552914815369",
+    "firebase_url": "https://irrigation-system-7bb5d-default-rtdb.firebaseio.com",
+    "project_id": "irrigation-system-7bb5d",
+    "storage_bucket": "irrigation-system-7bb5d.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:305137179870:android:eb42d6cfffed743d04764f",
+        "mobilesdk_app_id": "1:552914815369:android:5411dbc4d49b59cb743958",
         "android_client_info": {
           "package_name": "com.simpleirrigation.app"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCvDPNWFDnEBCUDwyaOBA5ZzudSE9SCxZs"
+          "current_key": "AIzaSyAifAG-Kf1kcLUw5tLbQ3wR7CdDU3M44CQ"
         }
       ],
       "services": {

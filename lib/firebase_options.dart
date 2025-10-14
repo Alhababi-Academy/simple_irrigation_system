@@ -50,19 +50,22 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCvDPNWFDnEBCUDwyaOBA5ZzudSE9SCxZs',
-    appId: '1:305137179870:android:eb42d6cfffed743d04764f',
-    messagingSenderId: '305137179870',
-    projectId: 'simple-irrigation-system',
-    storageBucket: 'simple-irrigation-system.appspot.com',
+    apiKey: 'AIzaSyAifAG-Kf1kcLUw5tLbQ3wR7CdDU3M44CQ',
+    appId: '1:552914815369:android:5411dbc4d49b59cb743958',
+    messagingSenderId: '552914815369',
+    projectId: 'irrigation-system-7bb5d',
+    databaseURL: 'https://irrigation-system-7bb5d-default-rtdb.firebaseio.com',
+    storageBucket: 'irrigation-system-7bb5d.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC_4Vea7tUeEqdvbqRMaHmmYIFgrzUgPg0',
-    appId: '1:305137179870:ios:6fad7a1e7f1896a004764f',
-    messagingSenderId: '305137179870',
-    projectId: 'simple-irrigation-system',
-    storageBucket: 'simple-irrigation-system.appspot.com',
+    apiKey: 'AIzaSyAPGQo4TgFvw6bZipe2_RynX8mbuIMJoI4',
+    appId: '1:552914815369:ios:bab7d6f7993ec2ba743958',
+    messagingSenderId: '552914815369',
+    projectId: 'irrigation-system-7bb5d',
+    databaseURL: 'https://irrigation-system-7bb5d-default-rtdb.firebaseio.com',
+    storageBucket: 'irrigation-system-7bb5d.firebasestorage.app',
     iosBundleId: 'com.example.simpleIrrigationSystem',
   );
+
 }

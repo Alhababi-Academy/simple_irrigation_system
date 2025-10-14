@@ -76,13 +76,14 @@ class _MainPageState extends State<MainPage> {
     setState(() {
       manualControl = value;
       autoControl = !value; // Ensure only one control is enabled
-      waterPumpStatus = false; // Immediately turn off the pump in manual mode
+      // Don't change pump status when switching to manual mode
+      // Keep current pump status so user can control it manually
     });
 
     _database.child('plant').update({
       'manual_control': manualControl,
       'auto_control': autoControl,
-      'pump_status': waterPumpStatus,
+      // Don't update pump_status here - let user control it manually
     });
   }
 
@@ -90,13 +91,13 @@ class _MainPageState extends State<MainPage> {
     setState(() {
       autoControl = value;
       manualControl = !value; // Ensure only one control is enabled
-      waterPumpStatus = false; // Turn off pump in auto mode
+      // Don't force pump off - let auto control logic on Arduino handle it
     });
 
     _database.child('plant').update({
       'auto_control': autoControl,
       'manual_control': manualControl,
-      'pump_status': false, // Reset pump status in auto mode
+      // Don't force pump_status - Arduino will control it automatically
     });
   }
 

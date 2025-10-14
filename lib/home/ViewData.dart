@@ -4,6 +4,58 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class DataViewPage extends StatelessWidget {
   const DataViewPage({super.key});
 
+  Future<void> _deleteAllData(BuildContext context) async {
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (context) => Directionality(
+        textDirection: TextDirection.rtl,
+        child: AlertDialog(
+          title: const Text('تأكيد الحذف'),
+          content: const Text('هل أنت متأكد من حذف جميع البيانات المحفوظة؟'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(false),
+              child: const Text('إلغاء'),
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(true),
+              child: const Text('حذف', style: TextStyle(color: Colors.red)),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    if (confirm == true) {
+      try {
+        final firestore = FirebaseFirestore.instance;
+        final snapshot = await firestore.collection('LiveData').get();
+
+        for (var doc in snapshot.docs) {
+          await doc.reference.delete();
+        }
+
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('تم حذف جميع البيانات بنجاح'),
+              backgroundColor: Colors.green,
+            ),
+          );
+        }
+      } catch (e) {
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('خطأ في حذف البيانات: $e'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -11,6 +63,17 @@ class DataViewPage extends StatelessWidget {
         <double>{}; // To track unique temperatures
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('البيانات المحفوظة'),
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.delete_sweep),
+            tooltip: 'حذف جميع البيانات',
+            onPressed: () => _deleteAllData(context),
+          ),
+        ],
+      ),
       body: StreamBuilder<QuerySnapshot>(
         stream: firestore
             .collection('LiveData')
